@@ -1,0 +1,70 @@
+<%- include('header') -%>
+<%- include('navbar') -%> 
+<div class="container" style="height: 100vh">
+    <div class="row">
+        <div class="col-12">
+            <h2>Marci hevesen számítógépei:</h2>
+            <div class="table-responsive-lg">
+            <table class="table table-striped table-bordered">
+                <tr>
+                    <th>
+                        Név
+                    </th>
+                    <th>
+                        Processzor
+                    </th>
+                    <th>
+                        Memória
+                    </th>
+                    <th>
+                        Videókártya
+                    </th>
+                    <th>
+                        Alaplap
+                    </th>
+                    <th>
+                        Tápegység
+                    </th>
+                    <th>
+                        Ház
+                    </th>
+                    <th>
+                        &nbsp;
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        UltraBrutalPusztito
+                    </td>
+                    <td>
+                        Intel Core i5 8160
+                    </td>
+                    <td>
+                        8GB DDR4
+                    </td>
+                    <td>
+                        Gigabyte GeForce GTX 1070 8GB
+                    </td>
+                    <td>
+                        Asus H110M-A/M.2
+                    </td>
+                    <td>
+                        XFX XTR 550W 80+
+                    </td>
+                    <td>
+                        Phanteks Enthoo EVOLV
+                    </td>
+                    <td style="width:30px;white-space: nowrap">
+                        <a href="/szamito/:felhaszid/edit/:szamitoid" class="btn btn-sm btn-outline-dark"><i class="far fa-edit"></i></a>
+                        <a href="/szamito/:felhaszid/del/:szamitoid" class="btn btn-sm btn-outline-danger"><i class="far fa-trash-alt"></i></a>
+                    </td>
+                </tr>
+            </table>
+            </div>
+            <br/>
+                <a href="/szamito/:felhaszid/new"btn btn pull-right btn-outline-dark" style="max-width: 250px">Új számítógép
+                    hozzáadása</a>
+        </div>
+    </div>
+</div>
+<% include('footer') %> 

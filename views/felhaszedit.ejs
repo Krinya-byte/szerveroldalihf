@@ -1,0 +1,36 @@
+<%- include('header') -%>
+    <%- include('navbar') -%>
+        <div class="container" style="height: 100vh">
+            <div class="row">
+                <div class="col-12">
+                    <h2>Felhasználó <% if (typeof felhasznalo === 'undefined' ) { %>
+                            létrehozás <% } else { %> módosítás
+                                <% } %>
+                    </h2>
+                    <form method="POST">
+                        <div class="form-group">
+                            <label for="nev">Név</label>
+                            <input type="text" class="form-control" id="nev" name="nev" placeholder="A becses nevem" value="<%= (typeof felhasznalo ==='undefined' ) ? '' : felhasznalo.nev %>">
+                        </div>
+                        <div class="form-group">
+                            <label for="kor">Kor</label>
+                            <input type="number" class="form-control" id="kor" name="kor"
+                                placeholder="Bármit beírhatsz senkit se izgat" value="<%= (typeof felhasznalo ==='undefined' ) ? '' : felhasznalo.kor %>">
+                        </div>
+                        <div class="form-group">
+                            <label for="hobbi">Hobbi</label>
+                            <input type="text" class="form-control" id="hobbi" name="hobbi"
+                                placeholder="Amit akkor csinálsz amikor az egyetemmel kellene foglalkoznod" value="<%= (typeof felhasznalo ==='undefined' ) ? '' : felhasznalo.hobbi %>">
+                        </div>
+                        <div class="form-group">
+                            <label for="tel">Telefonszám</label>
+                            <input type="text" class="form-control" id="tel" name="tel"
+                                placeholder="Csak nehogy felhívjalak ;D" value="<%= (typeof felhasznalo ==='undefined' ) ? '' : felhasznalo.telszam %>">
+                        </div>
+                        <input type="submit" class="btn btn-outline-dark" value="Mentés" />
+                        <a class="btn btn-outline-dark" href="/felhasz">Mégsem</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <%- include('footer') -%>

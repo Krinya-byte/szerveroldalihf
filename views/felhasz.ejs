@@ -1,0 +1,57 @@
+<%- include('header') -%>
+    <%- include('navbar') -%>
+        <div class="container" style="height: 100vh">
+            <div class="row">
+                <div class="col-12">
+                    <h2>Felhasználók listája</h2>
+                    <div class="table-responsive-lg">
+                        <table class="table table-striped table-bordered">
+                            <tr>
+                                <th>
+                                    Név
+                                </th>
+                                <th>
+                                    Kor
+                                </th>
+                                <th>
+                                    Hobbi
+                                </th>
+                                <th>
+                                    Telefonszám
+                                </th>
+                                <th>
+                                    &nbsp;
+                                </th>
+                            </tr>
+                            <% if (typeof felhasznalos === 'undefined') { console.log("empty database") }else{ felhasznalos.forEach(function(felhasznalo){ %>
+                                <tr>
+                                    <td>
+                                        <%= felhasznalo.nev %>
+                                    </td>
+                                    <td>
+                                        <%= felhasznalo.kor %>
+                                    </td>
+                                    <td>
+                                        <%= felhasznalo.hobbi %>
+                                    </td>
+                                    <td>
+                                        <%= felhasznalo.telszam %>
+                                    </td>
+                                    <td style="width:30px;white-space: nowrap">
+                                        <a href="/szamito/<%= felhasznalo._id%>" class="btn btn-sm btn-outline-dark">Számítók</a>
+                                        <a href="/felhasz/edit/<%= felhasznalo._id%>" class="btn btn-sm btn-outline-dark"><i
+                                                class="far fa-edit"></i></a>
+                                        <a href="/felhasz/del/<%= felhasznalo._id%>" class="btn btn-sm btn-outline-danger"><i
+                                                class="far fa-trash-alt"></i></a>
+                                    </td>
+                                </tr>
+                                <% }) } %>
+                        </table>
+                    </div>
+                    <br />
+                    <a href="/felhasz/new" class="btn  btn fa-pull-right btn-outline-dark" style="max-width: 250px">Új
+                        felhasználó hozzáadása</a>
+                </div>
+            </div>
+        </div>
+        <% include('footer') %>

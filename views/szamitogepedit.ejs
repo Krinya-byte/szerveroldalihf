@@ -1,0 +1,42 @@
+<%- include('header') -%>
+<%- include('navbar') -%> 
+<div class="container" style="height: 100vh">
+    <div class="row">
+        <div class="col-12">
+            <h2>Számítógép módosítás / létrehozás</h2>
+            <form>
+                <div class="form-group">
+                    <label for="name">Név</label>
+                    <input type="text" class="form-control" id="name" name="name">
+                </div>
+                <div class="form-group">
+                    <label for="proc">Processzor</label>
+                    <input type="text" class="form-control" id="proc" name="proc">
+                </div>
+                <div class="form-group">
+                    <label for="mem">Memória</label>
+                    <input type="text" class="form-control" id="mem" name="mem">
+                </div>
+                <div class="form-group">
+                    <label for="videoc">Videókártya</label>
+                    <input type="text" class="form-control" id="videoc" name="videoc">
+                </div>
+                <div class="form-group">
+                    <label for="motherb">Alaplap</label>
+                    <input type="text" class="form-control" id="motherb" name="motherb">
+                </div>
+                <div class="form-group">
+                    <label for="powers">Tápegység</label>
+                    <input type="text" class="form-control" id="powers" name="powers">
+                </div>
+                <div class="form-group">
+                    <label for="case">Ház</label>
+                    <input type="text" class="form-control" id="case" name="case">
+                </div>
+                <a class="btn btn-outline-dark" href="/szamito/:felhaszid/new">Mentés</a>
+                <a class="btn btn-outline-dark" href="/szamito/:felhaszid">Mégsem</a>
+            </form>
+        </div>
+    </div>
+</div>
+<% include('footer') %> 
