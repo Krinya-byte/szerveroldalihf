@@ -2,7 +2,7 @@
 Routok a middlewareekhez
  */
 
-const renderMW = require('../middleware/renderMw');
+const renderMW = require('../middleware/renderMw')
 const delFelhaszMW = require('../middleware/felhasz/delFelhaszMw');
 const getFelhasznalokMW = require('../middleware/felhasz/getFelhasznalokMw');
 const getFelhaszMW = require('../middleware/felhasz/getFelhaszMw');
@@ -11,9 +11,9 @@ const delSzamitoMW = require('../middleware/szamito/delSzamitoMw');
 const getSzamitokMW = require('../middleware/szamito/getSzamitokMw');
 const getSzamitoMW = require('../middleware/szamito/getSzamitoMw');
 const saveSzamitoMW = require('../middleware/szamito/saveSzamitoMw');
-
 const felhaszModel = require('../models/felhasznalo')
 const szamitoModel = require('../models/szamitogep')
+
 module.exports = function (app) {
     const objRepo = {
         felhaszModel: felhaszModel,
@@ -29,14 +29,8 @@ module.exports = function (app) {
         renderMW(objRepo, 'felhaszedit'));
     app.get('/felhasz/del/:felhaszid',
         getFelhaszMW(objRepo),
-        delFelhaszMW(objRepo));
-    app.get('/felhasz',
-        getFelhasznalokMW(objRepo),
+        delFelhaszMW(objRepo),
         renderMW(objRepo, 'felhasz'));
-    app.get('/szamito/:felhaszid',
-        getFelhaszMW(objRepo),
-        getSzamitokMW(objRepo),
-        renderMW(objRepo, 'felhasznaloszamito'));
     app.use('/szamito/:felhaszid/new',
         getFelhaszMW(objRepo),
         saveSzamitoMW(objRepo),
@@ -46,11 +40,18 @@ module.exports = function (app) {
         getSzamitoMW(objRepo),
         saveSzamitoMW(objRepo),
         renderMW(objRepo, 'szamitogepedit'));
+    app.get('/felhasz',
+        getFelhasznalokMW(objRepo),
+        renderMW(objRepo, 'felhasz'));
+    app.get('/szamito/:felhaszid',
+        getFelhaszMW(objRepo),
+        getSzamitokMW(objRepo),
+        renderMW(objRepo, 'felhasznaloszamito'));
     app.get('/szamito/:felhaszid/del/:szamitoid',
         getFelhaszMW(objRepo),
         getSzamitoMW(objRepo),
         delSzamitoMW(objRepo),
-        renderMW(objRepo, 'szamitogepedit'));
+        renderMW(objRepo, 'felhasznaloszamito'));
     app.use('/',
         renderMW(objRepo, 'index'));
 };

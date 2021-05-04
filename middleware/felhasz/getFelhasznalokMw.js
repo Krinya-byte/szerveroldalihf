@@ -7,12 +7,12 @@ const requireOption = require('../requireOption');
 module.exports = function (objectrepository) {
     const felhaszModel = requireOption(objectrepository, 'felhaszModel')
     return function (req, res, next) {
-            felhaszModel.find({}, (err, felhasznalok) => {
+            felhaszModel.find({}, (err, felhasznalos) => {
                 if (err) {
-                    return next(err);
+                    console.log(err)
                 }
-                res.locals.felhasznalok = felhasznalok
+                res.locals.felhasznalos = felhasznalos
+                return next()
             })
-            return next()
     }
 }

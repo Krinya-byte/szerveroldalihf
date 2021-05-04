@@ -23,10 +23,10 @@
                                     &nbsp;
                                 </th>
                             </tr>
-                            <% if (typeof felhasznalos === 'undefined') { console.log("empty database") }else{ felhasznalos.forEach(function(felhasznalo){ %>
+                            <% felhasznalos.forEach(function(felhasznalo){ %>
                                 <tr>
                                     <td>
-                                        <%= felhasznalo.nev %>
+                                        <%= felhasznalo.nev%>
                                     </td>
                                     <td>
                                         <%= felhasznalo.kor %>
@@ -38,14 +38,14 @@
                                         <%= felhasznalo.telszam %>
                                     </td>
                                     <td style="width:30px;white-space: nowrap">
-                                        <a href="/szamito/<%= felhasznalo._id%>" class="btn btn-sm btn-outline-dark">Számítók</a>
-                                        <a href="/felhasz/edit/<%= felhasznalo._id%>" class="btn btn-sm btn-outline-dark"><i
+                                        <a href="/szamito/<%=felhasznalo._id%>" class="btn btn-sm btn-outline-dark">Számítók</a>
+                                        <a href="/felhasz/edit/<%=felhasznalo._id%>" class="btn btn-sm btn-outline-dark"><i
                                                 class="far fa-edit"></i></a>
-                                        <a href="/felhasz/del/<%= felhasznalo._id%>" class="btn btn-sm btn-outline-danger"><i
+                                        <a href="/felhasz/del/<%=felhasznalo._id%>" class="btn btn-sm btn-outline-danger"><i
                                                 class="far fa-trash-alt"></i></a>
                                     </td>
                                 </tr>
-                                <% }) } %>
+                                <% }) %>
                         </table>
                     </div>
                     <br />
@@ -54,4 +54,4 @@
                 </div>
             </div>
         </div>
-        <% include('footer') %>
+        <%- include('footer') -%>

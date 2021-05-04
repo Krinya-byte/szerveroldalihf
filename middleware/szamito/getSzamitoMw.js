@@ -5,22 +5,19 @@
 const requireOption = require('../requireOption');
 
 module.exports = function (objectrepository) {
+    var szamitoModel = requireOption(objectrepository, 'szamitoModel')
     return function (req, res, next) {
-        var szamitoModel = requireOption(objectrepository, 'szamitoModel')
-
-        if (typeof req.param('szamitoid') === 'undefined') {
+        if (typeof req.params.szamitoid === 'undefined') {
             return next();
         }
+        szamitoModel.findOne({ _id: req.params.szamitoid }, (err, szamitogep) => {
+            if (err) {
+                console.log(err)
+                return next();
+            }
 
-        return function (req, res, next) {
-            szamitoModel.findOne({ _id: req.params.szamitoid }, (err, szamitogep) => {
-                if (err || !szamitogep) {
-                    return next(err);
-                }
-
-                res.locals.szamitogep = szamitogep
-                return next()
-            })
-        }
+            res.locals.szamitogep = szamitogep
+            return next()
+        })
     }
 }

@@ -3,38 +3,40 @@
 <div class="container" style="height: 100vh">
     <div class="row">
         <div class="col-12">
-            <h2>Számítógép módosítás / létrehozás</h2>
-            <form>
+            <h2>Számítógép<% if (typeof szamitogep === 'undefined' ) { %>
+                létrehozás <% } else { %> módosítás
+                    <% } %></h2>
+            <form method="POST">
                 <div class="form-group">
                     <label for="name">Név</label>
-                    <input type="text" class="form-control" id="name" name="name">
+                    <input type="text" class="form-control" id="name" name="nev" value="<%= (typeof szamitogep === 'undefined') ? '' : szamitogep.nev %>"/>
                 </div>
                 <div class="form-group">
                     <label for="proc">Processzor</label>
-                    <input type="text" class="form-control" id="proc" name="proc">
+                    <input type="text" class="form-control" id="proc" name="processzor" value="<%= (typeof szamitogep === 'undefined') ? '' : szamitogep.processzor %>"/>
                 </div>
                 <div class="form-group">
                     <label for="mem">Memória</label>
-                    <input type="text" class="form-control" id="mem" name="mem">
+                    <input type="text" class="form-control" id="mem" name="memoria" value="<%= (typeof szamitogep === 'undefined') ? '' : szamitogep.memoria %>"/>
                 </div>
                 <div class="form-group">
                     <label for="videoc">Videókártya</label>
-                    <input type="text" class="form-control" id="videoc" name="videoc">
+                    <input type="text" class="form-control" id="videoc" name="videokartya" value="<%= (typeof szamitogep === 'undefined') ? '' : szamitogep.videokartya %>"/>
                 </div>
                 <div class="form-group">
                     <label for="motherb">Alaplap</label>
-                    <input type="text" class="form-control" id="motherb" name="motherb">
+                    <input type="text" class="form-control" id="motherb" name="alaplap" value="<%= (typeof szamitogep === 'undefined') ? '' : szamitogep.alaplap %>"/>
                 </div>
                 <div class="form-group">
                     <label for="powers">Tápegység</label>
-                    <input type="text" class="form-control" id="powers" name="powers">
+                    <input type="text" class="form-control" id="powers" name="tapegyseg" value="<%= (typeof szamitogep === 'undefined') ? '' : szamitogep.tapegyseg %>"/>
                 </div>
                 <div class="form-group">
                     <label for="case">Ház</label>
-                    <input type="text" class="form-control" id="case" name="case">
+                    <input type="text" class="form-control" id="case" name="haz" value="<%= (typeof szamitogep === 'undefined') ? '' : szamitogep.haz %>"/>
                 </div>
-                <a class="btn btn-outline-dark" href="/szamito/:felhaszid/new">Mentés</a>
-                <a class="btn btn-outline-dark" href="/szamito/:felhaszid">Mégsem</a>
+                <input type="submit" class="btn btn-outline-dark" href="/szamito/<%=felhasznalo._id%>/new"value="Mentés"/>
+                <a class="btn btn-outline-dark" href="/szamito/<%=felhasznalo._id%>">Mégsem</a>
             </form>
         </div>
     </div>

@@ -7,17 +7,15 @@ const requireOption = require('../requireOption');
 module.exports = function (objectrepository) {
     var felhaszModel = requireOption(objectrepository, 'felhaszModel')
     return function (req, res, next) {
-        if (typeof req.body.userid === 'undefined') {
-            console.log("miafasz")
+        if (typeof req.params.felhaszid === 'undefined') {
+            console.log("miafaszom")
             return next()
         }
-        console.log("miafasz")
-        felhaszModel.findOne({ _id: req.params.userid }, (err, felhasznalo) => {
-            if (err || !felhasznalo) {
-                console.log("miafasz")
+        felhaszModel.findOne({ _id: req.params.felhaszid }, (err, felhasznalo) => {
+            if (err) {
+                console.log(err)
                 return next()
             }
-
             res.locals.felhasznalo = felhasznalo
             return next()
         })
