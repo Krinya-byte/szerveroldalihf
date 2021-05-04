@@ -14,7 +14,7 @@ module.exports = function (objectrepository) {
             typeof req.body.nev === 'undefined' ||
             typeof req.body.kor === 'undefined' ||
             typeof req.body.hobbi === 'undefined' ||
-            typeof req.body.telszam
+            typeof req.body.telszam === 'undefined'
         ) {
             console.log("mivan")
             return next();
