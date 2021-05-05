@@ -23,7 +23,7 @@
                                     &nbsp;
                                 </th>
                             </tr>
-                            <% felhasznalos.forEach(function(felhasznalo){ %>
+                            <% if(typeof felhasznalos === 'undefined') { } else {felhasznalos.forEach(function(felhasznalo){ %>
                                 <tr>
                                     <td>
                                         <%= felhasznalo.nev%>
@@ -45,7 +45,7 @@
                                                 class="far fa-trash-alt"></i></a>
                                     </td>
                                 </tr>
-                                <% }) %>
+                                <% }) }%>
                         </table>
                     </div>
                     <br />
