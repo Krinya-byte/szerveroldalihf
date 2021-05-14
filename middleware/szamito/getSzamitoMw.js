@@ -7,13 +7,10 @@ const requireOption = require('../requireOption');
 module.exports = function (objectrepository) {
     var szamitoModel = requireOption(objectrepository, 'szamitoModel')
     return function (req, res, next) {
-        if (typeof req.params.szamitoid === 'undefined') {
-            return next();
-        }
         szamitoModel.findOne({ _id: req.params.szamitoid }, (err, szamitogep) => {
-            if (err) {
+            if (err ||!szamitogep) {
                 console.log(err)
-                return next();
+                return next(err);
             }
 
             res.locals.szamitogep = szamitogep
